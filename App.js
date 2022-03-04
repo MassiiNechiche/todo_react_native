@@ -4,6 +4,8 @@ import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpaci
 import Task from './components/Task'
 
 export default function App() {
+    const [task, setTask] = useState()
+
     return (
         <View style={styles.container}>
             <View style={styles.tasksWrapper}>
@@ -19,7 +21,7 @@ export default function App() {
             </View>
 
             <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.writeTaskWrapper}>
-                <TextInput style={styles.input} placeholder={'Write a task'} />
+                <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={(text) => setTask(text)} />
                 <TouchableOpacity>
                     <View style={styles.addWrapper}>
                         <Text style={styles.addText}>+</Text>
